@@ -367,14 +367,18 @@
 <script>
   const tabs = document.querySelectorAll('nav.tabs button');
   const sections = document.querySelectorAll('main section');
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const id = btn.dataset.tab;
-      sections.forEach(s => s.classList.toggle('active', s.id === id));
-      window.scrollTo({top:0,behavior:'smooth'});
-    });
+  function showTab(id){
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+    sections.forEach(s => s.classList.toggle('active', s.id === id));
+    if (location.hash !== '#'+id) history.replaceState(null,'','#'+id);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(btn => btn.addEventListener('click', () => showTab(btn.dataset.tab)));
+  const initial = (location.hash||'').replace('#','') || 'cover';
+  showTab(document.getElementById(initial)? initial : 'cover');
+  window.addEventListener('hashchange', () => {
+    const id = (location.hash||'').replace('#','');
+    if (document.getElementById(id)) showTab(id);
   });
 
   // Quiz
