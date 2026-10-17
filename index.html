@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تعلم الوضوء والصلاة للأطفال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#7dd3fc;
+    --sky-deep:#0ea5e9;
+    --sun:#fbbf24;
+    --sun-soft:#fde68a;
+    --grass:#4ade80;
+    --grass-deep:#16a34a;
+    --coral:#fb7185;
+    --coral-soft:#fecdd3;
+    --lavender:#a78bfa;
+    --lavender-soft:#ddd6fe;
+    --mint:#34d399;
+    --cream:#fffbeb;
+    --ink:#1e293b;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Tajawal',sans-serif;background:linear-gradient(180deg,#e0f2fe 0%,#fef9c3 50%,#dcfce7 100%);color:var(--ink);min-height:100vh;overflow-x:hidden}
+  body{padding-bottom:40px}
+  /* floating shapes */
+  .bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .shape{position:absolute;opacity:.18;animation:float 8s ease-in-out infinite}
+  .shape.star{width:40px;height:40px;background:var(--sun);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+  .shape.circle{width:60px;height:60px;border-radius:50%;background:var(--coral)}
+  .shape.tri{width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:45px solid var(--lavender)}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(15deg)}}
+
+  header.hero{position:relative;z-index:1;text-align:center;padding:40px 20px 30px;background:linear-gradient(135deg,var(--sky-deep),var(--lavender));color:#fff;border-radius:0 0 40px 40px;box-shadow:0 10px 30px rgba(0,0,0,.15);overflow:hidden}
+  .hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;text-shadow:2px 2px 0 rgba(0,0,0,.15);margin-bottom:8px}
+  .hero p{font-size:1.2rem;opacity:.95}
+  .hero .emojis{font-size:2.5rem;margin:12px 0;letter-spacing:8px}
+  .hero .badge{display:inline-block;background:var(--sun);color:#78350f;padding:6px 16px;border-radius:999px;font-weight:700;margin-top:10px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+
+  nav.tabs{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:20px 16px}
+  nav.tabs button{background:var(--card);border:2px solid transparent;padding:10px 18px;border-radius:999px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:all .2s;color:var(--ink)}
+  nav.tabs button:hover{transform:translateY(-3px);border-color:var(--sky-deep)}
+  nav.tabs button.active{background:linear-gradient(135deg,var(--sky-deep),var(--lavender));color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(14,165,233,.4)}
+
+  main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 16px}
+  section{display:none;background:var(--card);border-radius:24px;padding:28px 24px;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,.08);animation:fade .4s ease}
+  section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  section h2{font-size:1.7rem;font-weight:800;color:var(--sky-deep);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section h3{font-size:1.25rem;font-weight:700;color:var(--grass-deep);margin:16px 0 8px}
+  p{line-height:1.9;margin-bottom:10px;font-size:1.05rem}
+  .card{background:linear-gradient(135deg,#f0f9ff,#fdf4ff);border-radius:16px;padding:16px 18px;margin:12px 0;border-right:5px solid var(--sky-deep)}
+  .step{display:flex;gap:14px;align-items:flex-start;background:#f8fafc;border-radius:16px;padding:14px 16px;margin:10px 0;border:2px dashed #cbd5e1;transition:transform .2s}
+  .step:hover{transform:translateX(-4px);border-color:var(--grass)}
+  .step .num{min-width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sun),var(--coral));color:#fff;font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(251,113,133,.4)}
+  .step .txt{flex:1}
+  .step .txt b{color:var(--sky-deep)}
+  .verse{background:linear-gradient(135deg,#ecfdf5,#fef3c7);border-radius:16px;padding:18px 20px;margin:14px 0;text-align:center;font-family:'Amiri',serif;font-size:1.35rem;line-height:2;color:#065f46;border:2px solid #a7f3d0}
+  .verse .ref{font-family:'Tajawal';font-size:.9rem;color:#047857;margin-top:8px;display:block}
+  .list{list-style:none;padding:0}
+  .list li{background:#fff;border-radius:12px;padding:10px 14px;margin:8px 0;box-shadow:0 2px 8px rgba(0,0,0,.05);border-right:4px solid var(--lavender);display:flex;align-items:center;gap:10px}
+  .list li::before{content:"✨";font-size:1.1rem}
+  .supp{background:linear-gradient(135deg,#fef3c7,#fce7f3);border-radius:16px;padding:16px 18px;margin:12px 0;font-family:'Amiri',serif;font-size:1.15rem;line-height:2;color:#7c2d12;border:2px solid #fbcfe8}
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .meta-item{background:linear-gradient(135deg,#f0f9ff,#ecfdf5);border-radius:14px;padding:14px 16px;border:2px solid #bae6fd}
+  .meta-item .label{font-size:.85rem;color:#0369a1;font-weight:700;margin-bottom:4px}
+  .meta-item .val{font-size:1.05rem;font-weight:600}
+  .footer{text-align:center;padding:20px;color:#64748b;font-size:.9rem}
+  .print-btn{position:fixed;bottom:20px;left:20px;background:var(--grass-deep);color:#fff;border:none;padding:12px 18px;border-radius:999px;font-family:inherit;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.4);z-index:2}
+  .print-btn:hover{transform:scale(1.05)}
+  @media print{.bg-shapes,nav.tabs,.print-btn{display:none}section{display:block!important;box-shadow:none;border:1px solid #ddd}body{background:#fff}}
+  .quran{font-family:'Amiri',serif}
+  .emoji-big{font-size:2.5rem;text-align:center;margin:10px 0}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .q-question{background:linear-gradient(135deg,#f0f9ff,#fdf4ff);border-radius:16px;padding:16px 18px;margin:14px 0;border:2px solid #bae6fd}
+  .q-question h4{font-size:1.1rem;font-weight:700;color:var(--sky-deep);margin-bottom:10px}
+  .q-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(max-width:500px){.q-options{grid-template-columns:1fr}}
+  .q-btn{background:#fff;border:2px solid #cbd5e1;border-radius:12px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;text-align:right;transition:all .2s}
+  .q-btn:hover{border-color:var(--sky-deep);transform:translateY(-2px)}
+  .q-btn.correct{background:#dcfce7;border-color:var(--grass-deep);color:#166534}
+  .q-btn.wrong{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+  .q-btn:disabled{cursor:default}
+  .score-box{background:linear-gradient(135deg,var(--sun),var(--coral));color:#fff;border-radius:20px;padding:20px 30px;display:inline-block;font-size:1.3rem;font-weight:800;box-shadow:0 8px 20px rgba(251,113,133,.4)}
+</style>
+</head>
+<body>
+<div class="bg-shapes">
+  <div class="shape star" style="top:8%;left:5%"></div>
+  <div class="shape circle" style="top:15%;right:8%"></div>
+  <div class="shape tri" style="top:40%;left:3%"></div>
+  <div class="shape star" style="top:60%;right:5%"></div>
+  <div class="shape circle" style="top:75%;left:10%"></div>
+  <div class="shape tri" style="top:85%;right:12%"></div>
+</div>
+
+<header class="hero">
+  <div class="emojis">🕌 💧 📿 ⭐</div>
+  <h1>تعلم الوضوء والصلاة للأطفال</h1>
+  <p>كتاب تعليمي مصوّر لتعلم الوضوء والصلاة بطريقة مبسطة وممتعة</p>
+  <span class="badge">للأعمار ٥-١٢ سنة</span>
+  <div style="margin-top:14px">
+    <a href="Noor-Book.com  الوضوء و الصلاة للأطفال.pdf" target="_blank" rel="noopener" style="display:inline-block;background:var(--sun);color:#78350f;padding:10px 20px;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.2)">📖 قراءة كـ PDF</a>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-tab="cover">🏠 الغلاف</button>
+  <button data-tab="info">📋 معلومات</button>
+  <button data-tab="intro">🌟 مقدمة</button>
+  <button data-tab="wudu">💧 الوضوء</button>
+  <button data-tab="prayer">🕌 الصلاة</button>
+  <button data-tab="dua">🤲 الأدعية</button>
+  <button data-tab="awrah">👔 العورة</button>
+  <button data-tab="mosque">🏛️ المسجد</button>
+  <button data-tab="activities">🎨 أنشطة</button>
+</nav>
+
+<main>
+<!-- COVER -->
+<section id="cover" class="active">
+  <h2>🏠 غلاف الكتاب</h2>
+  <div class="emoji-big">📖 🕌 💧</div>
+  <div class="card">
+    <p><b>عنوان الكتاب:</b> الوضوء والصلاة</p>
+    <p><b>المؤلفة:</b> حافظة سلسبيل نسيبة</p>
+    <p><b>الناشر:</b> نشر شخصي</p>
+  </div>
+  <div class="verse quran">
+    وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ
+    <span class="ref">سورة البقرة - آية ٤٥</span>
+  </div>
+  <p>هذا الكتاب مصمم لمساعدة الأطفال على تعلم أركان الوضوء والصلاة بطريقة سهلة، خطوة بخطوة، مع الأدعية والآداب، ليصبحوا خاشعين في صلاتهم.</p>
+</section>
+
+<!-- INFO -->
+<section id="info">
+  <h2>📋 معلومات الكتاب</h2>
+  <div class="meta-grid">
+    <div class="meta-item"><div class="label">المؤلفة</div><div class="val">حافظة سلسبيل نسيبة</div></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <h2>🌟 مقدمة</h2>
+  <div class="card">
+    <p><b>أزكى الإسلام:</b> حافظي، في هذا الجزء سندرس الوضوء والصلاة، في زاوية أي زكاة في هذا الكتاب؟</p>
+  </div>
+  <h3>❓ سؤال للتفكير</h3>
+  <p>ما هو الشيء الذي سندرسه في هذا الكتاب؟</p>
+  <div class="card">
+    <p><b>جواب:</b> سندرس الوضوء والصلاة، وهما أزكى الإسلام، وهما إقامة الصلاة.</p>
+  </div>
+  <h3>أجزاء الوضوء</h3>
+  <div class="two-col">
+    <div class="step"><div class="num">1</div><div class="txt"><b>الرأس</b> - مسح الرأس</div></div>
+    <div class="step"><div class="num">2</div><div class="txt"><b>الوجه</b> - غسل الوجه</div></div>
+    <div class="step"><div class="num">3</div><div class="txt"><b>اليدين</b> - غسل اليدين</div></div>
+    <div class="step"><div class="num">4</div><div class="txt"><b>الرجلين</b> - غسل الرجلين</div></div>
+  </div>
+  <div class="verse quran">
+    وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ
+    <span class="ref">سورة البقرة - آية ٤٥</span>
+  </div>
+</section>
+
+<!-- WUDU -->
+<section id="wudu">
+  <h2>💧 الوضوء</h2>
+  <p>الوضوء هو طهارة البدن قبل الصلاة، ويتم بغسل أجزاء من الجسم بالماء.</p>
+  <h3>أجزاء الوضوء</h3>
+  <div class="step"><div class="num">1</div><div class="txt"><b>الوجه</b> - غسل الوجه من منابت الشعر إلى الذقن، ومن الأذن إلى الأذن.</div></div>
+  <div class="step"><div class="num">2</div><div class="txt"><b>اليدين</b> - غسل اليدين إلى المرفقين.</div></div>
+  <div class="step"><div class="num">3</div><div class="txt"><b>الرأس</b> - مسح الرأس (أو جزء منه).</div></div>
+  <div class="step"><div class="num">4</div><div class="txt"><b>الرجلين</b> - غسل الرجلين إلى الكعبين.</div></div>
+  <h3>❓ كم عدد الأجزاء التي تغسل في الوضوء؟</h3>
+  <div class="card"><p>أربعة أجزاء رئيسية: الوجه، اليدين، الرأس، الرجلين.</p></div>
+  <h3>❓ ما هي خطوات الوضوء؟</h3>
+  <div class="card"><p>١. النية ٢. غسل اليدين ٣. المضمضة ٤. الاستنشاق ٥. غسل الوجه ٦. غسل اليدين إلى المرفقين ٧. مسح الرأس ٨. غسل الرجلين.</p></div>
+  <div class="verse quran">
+    يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُؤُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ
+    <span class="ref">سورة المائدة - آية ٦</span>
+  </div>
+</section>
+
+<!-- PRAYER -->
+<section id="prayer">
+  <h2>🕌 الصلاة</h2>
+  <h3>❓ ما هي الصلاة؟</h3>
+  <div class="card"><p>الصلاة هي الركن الثاني من أركان الإسلام، وهي عبادة لله تؤدى بحركات وأقوال محددة.</p></div>
+  <h3>خطوات الصلاة</h3>
+  <div class="step"><div class="num">1</div><div class="txt"><b>التكبير:</b> "الله أكبر"</div></div>
+  <div class="step"><div class="num">2</div><div class="txt"><b>قراءة سورة الفاتحة:</b> "بسم الله الرحمن الرحيم..."</div></div>
+  <div class="step"><div class="num">3</div><div class="txt"><b>الركوع:</b> "سبحان ربي العظيم" (٣ مرات)</div></div>
+  <div class="step"><div class="num">4</div><div class="txt"><b>الرفع من الركوع:</b> "سمع الله لمن حمده"</div></div>
+  <div class="step"><div class="num">5</div><div class="txt"><b>السجود:</b> "سبحان ربي الأعلى" (٣ مرات)</div></div>
+  <div class="step"><div class="num">6</div><div class="txt"><b>الجلوس بين السجدتين:</b> "رب اغفر لي"</div></div>
+  <div class="step"><div class="num">7</div><div class="txt"><b>التشهد:</b> "التحيات لله..."</div></div>
+  <div class="step"><div class="num">8</div><div class="txt"><b>التسليم:</b> "السلام عليكم ورحمة الله" (يمينًا ثم يسارًا)</div></div>
+  <h3>🕌 صلاة ركعتين (طريقة مختصرة)</h3>
+  <p>بعد أن تنتهي من الصلاة اقرأ آية الكرسي:</p>
+  <div class="supp">اللهم صل على محمد وعلى آل محمد كما صليت على إبراهيم وعلى آل إبراهيم، اللهم بارك على محمد وعلى آل محمد كما باركت على إبراهيم وعلى آل إبراهيم، إنك حميد مجيد</div>
+  <h3>📌 ملاحظات</h3>
+  <ul class="list">
+    <li>صلاة الفجر: ركعتان</li>
+    <li>صلاة الظهر: أربع ركعات</li>
+    <li>صلاة العصر: أربع ركعات</li>
+    <li>صلاة المغرب: ثلاث ركعات</li>
+    <li>صلاة العشاء: أربع ركعات</li>
+  </ul>
+  <div class="verse quran">
+    إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا
+    <span class="ref">سورة النساء - آية ١٠٣</span>
+  </div>
+</section>
+
+<!-- DUA -->
+<section id="dua">
+  <h2>🤲 الأدعية</h2>
+  <h3>دعاء الاستفتاح</h3>
+  <div class="supp">اللهم باعد بيني وبين خطاياي كما باعدت بين المشرق والمغرب، اللهم نقني من الذنوب والخطايا كما ينقى الثوب الأبيض من الدنس، اللهم اغسلني بالماء والثلج والبرد.</div>
+  <div class="supp">وجهي وجهي للذي فطر السماوات والأرض حنيفا وما أنا من المشركين، إن صلاتي ونسكي ومحياي ومماتي لله رب العالمين ولا شريك له.</div>
+  <div class="supp">سبحانك اللهم وبحمدك وتبارك اسمك وتعالى جدك ولا إله غيرك.</div>
+  <h3>أدعية أثناء الصلاة</h3>
+  <p><b>أثناء الركوع:</b></p>
+  <div class="supp">اللهم لك ركعت وبك آمنت ولك أسلمت خشع لك سمعي وبصري وعظمي وعصري.</div>
+  <p><b>أثناء السجود:</b></p>
+  <div class="supp">اللهم لك سجدت وبك آمنت ولك أسلمت، سجد وجهي للذي خلقه وصوره وشق سمعه وبصره، بارك الله أحسن الخالقين.</div>
+  <p><b>بعد التشهد:</b></p>
+  <div class="supp">اللهم اغفر لي ما قدمت وما أخرت وما أسررت وما أعلنت وما أسرفت وما أنت أعلم به مني، لا إله إلا أنت.</div>
+  <h3>دعاء بعد الصلاة</h3>
+  <div class="supp">اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.</div>
+  <h3>💡 ملاحظات</h3>
+  <ul class="list">
+    <li>يمكنك دعاء أي دعاء بعد التشهد.</li>
+    <li>صلاة ركعتين: بعد التشهد قم إلى ركعة جديدة واقرأ سورة واحدة وركع ثم اسجد.</li>
+    <li>بعد أن تنتهي من الصلاة اقرأ آية الكرسي.</li>
+  </ul>
+</section>
+
+<!-- AWRAH -->
+<section id="awrah">
+  <h2>👔 العورة في الصلاة</h2>
+  <p>العورة هي الجزء الذي يجب تغطيته بالملابس أثناء الصلاة.</p>
+  <h3>عورة الرجل</h3>
+  <div class="card"><p>هو كل جسمه ما بين السرة والركبة.</p></div>
+  <h3>عورة الصبي</h3>
+  <div class="card"><p>هي ما بين السرة والركبة.</p></div>
+  <h3>❓ كيف نصلي إذا لم تتوفر ملابس كاملة؟</h3>
+  <div class="card">
+    <p><b>وفق الطريقة الإسلامية (تفسيير ابن كثير مختصر):</b></p>
+    <p>إذا لم تجد ملابس كاملة، فصلِّ بما تقدر عليه:</p>
+    <ul class="list">
+      <li>إذا وجدت ما يغطي عورتك (من السرة إلى الركبة) فصلِّ به (إزار/ثوب).</li>
+      <li>إذا وجدت ثوباً واحداً فلفّه على عورتك (أسفل أو أعلاها).</li>
+      <li>إذا لم تجد شيئاً، فصلِّ كما تستطيع: قياماً إن قدرت، وإلا جلوساً، وإلا على جنب، أو بالإيماء (إيماءً بالرأس) إن لم تستطع.</li>
+    </ul>
+    <p><i>قال ﷺ: "صلِّ قائماً، فإن لم تستطع فقاعداً، فإن لم تستطع فعلى جنب" (متفق عليه).</i></p>
+    <p><small>ملاحظة للأطفال: في العادة نصلي بملابس نظيفة كاملة؛ هذا الحكم للضرورة (كالمسافر/المريض/فقير).</small></p>
+  </div>
+  <div class="card">
+    <p><b>ملاحظة:</b> يخفض صوت المصلّى فلا يُسمع غيره. صلاة جهرًا: يصلي فيها المصلّى ويُسمع من حوله.</p>
+  </div>
+  <div class="verse quran">
+    إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا
+    <span class="ref">سورة النساء - آية ١٠٣</span>
+  </div>
+</section>
+
+<!-- MOSQUE -->
+<section id="mosque">
+  <h2>🏛️ آداب المسجد (وفق المصادر الإسلامية الصحيحة)</h2>
+  <div class="emoji-big">🕌 🕌 🕌</div>
+  <p>المسجد بيت الله، وفيه آداب وأحكام ذكرها القرآن والسنة. إليك أهمها:</p>
+
+  <h3>١. الطهارة (الوضوء)</h3>
+  <div class="card"><p>الدخول إلى المسجد على طهارة (وضوء) مستحب، والصلاة لا تصح إلا بوضوء. ﴿يا أيها الذين آمنوا إذا قمتم إلى الصلاة فاغسلوا...﴾ (المائدة: ٦).</p></div>
+
+  <h3>٢. الدخول والخروج</h3>
+  <div class="step"><div class="num">➡️</div><div class="txt"><b>عند الدخول:</b> تقديم الرجل اليمنى، والقول: <i>"اللهم افتح لي أبواب رحمتك"</i> (رواه مسلم).</div></div>
+  <div class="step"><div class="num">⬅️</div><div class="txt"><b>عند الخروج:</b> تقديم الرجل اليسرى، والقول: <i>"اللهم إني أسألك من فضلك"</i> (رواه مسلم).</div></div>
+
+  <h3>٣. تحية المسجد</h3>
+  <div class="card"><p>إذا دخلت المسجد فصلِّ ركعتين قبل أن تجلس (تحية المسجد). قال ﷺ: "إذا دخل أحدكم المسجد فليصلِّ ركعتين قبل أن يجلس" (متفق عليه).</p></div>
+
+  <h3>٤. النظافة وتجنب الروائح</h3>
+  <ul class="list">
+    <li>تجنب أكل الثوم والبصل والكراث قبل الذهاب إلى المسجد (لأن الملائكة تتأذى). (متفق عليه)</li>
+    <li>الاهتمام بالنظافة (الثياب، الفم، الجسم) احتراماً لبيت الله.</li>
+    <li>عدم إلقاء الأوساخ أو النفايات في المسجد.</li>
+  </ul>
+
+  <h3>٥. الهدوء والخشوع</h3>
+  <ul class="list">
+    <li>عدم رفع الصوت (اللغو، الضحك، المزاح) في المسجد. ﴿وَإِذَا قَرَأْتَ الْقُرْآنَ فَاسْتَمِعُوا لَهُ وَأَنْصِتُوا﴾ (الأعراف: ٢٠٤).</li>
+    <li>عدم المرور بين يدي المصلّي. قال ﷺ: "لو يعلم المار بين يدي المصلّي ماذا عليه لكان أن يقف أربعين خيراً له من أن يمر" (متفق عليه).</li>
+    <li>الإقبال على الصلاة بخشوع وتفكر.</li>
+  </ul>
+
+  <h3>٦. صلاة الجماعة وصفوفها</h3>
+  <ul class="list">
+    <li>الحرص على صلاة الجماعة (فضلها ٢٧ درجة على صلاة الفرد). (متفق عليه)</li>
+    <li>تسوية الصفوف وسد الفرج (عدم ترك فراغات). قال ﷺ: "سووا صفوفكم فإن تسوية الصفوف من إقامة الصلاة" (متفق عليه).</li>
+    <li>الاقتداء بالإمام (لا تسبق الإمام).</li>
+  </ul>
+
+  <h3>٧. ما يُمنع في المسجد</h3>
+  <ul class="list">
+    <li>البيع والشراء (التجارة) في المسجد. قال ﷺ: "إذا رأيتم من يبيع أو يبتاع في المسجد فقولوا: لا أربحت تجارتك" (رواه الترمذي).</li>
+    <li>البحث عن الضالّة (الأشياء المفقودة) في المسجد. قال ﷺ: "من سمع رجلاً ينشد ضالة في المسجد فليقل: لا ردّها الله عليك" (رواه مسلم).</li>
+    <li>تجنب إنشاد الأشعار (الأشعار الماجنة) في المسجد.</li>
+    <li>عدم رفع الصوت بالقراءة (القرآن) بشكل يزعج الآخرين.</li>
+  </ul>
+
+  <h3>٨. الدعاء بين الأذان والإقامة</h3>
+  <div class="card"><p>الدعاء بين الأذان والإقامة لا يُرد. قال ﷺ: "الدعاء لا يُرد بين الأذان والإقامة" (رواه أبو داود والترمذي).</p></div>
+
+  <h3>٩. آداب إضافية</h3>
+  <ul class="list">
+    <li>عدم إقامة الحدود (العقوبة) في المسجد.</li>
+    <li>عدم إدخال الأسلحة (إلا للحاجة) أو الأشياء المزعجة.</li>
+    <li>احترام المسجد (عدم الجلوس في ممر المصلين، عدم مد الأرجل نحو القبلة).</li>
+    <li>الإنصات لخطبة الجمعة.</li>
+  </ul>
+
+  <div class="verse quran">
+    وَأَنَّ الْمَسَاجِدَ لِلَّهِ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا
+    <span class="ref">سورة الجن - آية ١٨</span>
+  </div>
+  <div class="verse quran">
+    فِي بُيُوتٍ أَذِنَ اللَّهُ أَن تُرْفَعَ وَيُذْكَرَ فِيهَا اسْمُهُ
+    <span class="ref">سورة النور - آية ٣٦</span>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <h2>🎯 اختبار: كم تعرف عن الوضوء والصلاة؟</h2>
+  <p>أجب عن الأسئلة التالية واكتشف معرفتك! 🌟</p>
+  <div id="quiz"></div>
+  <div id="quiz-result" style="display:none;text-align:center;margin-top:20px"></div>
+  <button id="quiz-restart" style="display:none;position:static;margin:20px auto;background:var(--sky-deep)">🔄 إعادة الاختبار</button>
+</section>
+</main>
+
+<div class="footer">© ٢٠٢٥ - تعلم الوضوء والصلاة للأطفال | تصميم تعليمي</div>
+<button class="print-btn" onclick="window.print()">🖨️ طباعة</button>
+
+<script>
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const sections = document.querySelectorAll('main section');
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const id = btn.dataset.tab;
+      sections.forEach(s => s.classList.toggle('active', s.id === id));
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+
+  // Quiz
+  const quizData = [
+    {q:"كم عدد أجزاء الوضوء الرئيسية؟", opts:["٢","٣","٤","٥"], a:2, explain:"أربعة أجزاء: الوجه، اليدين، الرأس، الرجلين."},
+    {q:"أي سورة ذكرت آية الوضوء؟", opts:["الفاتحة","البقرة","المائدة","النساء"], a:2, explain:"سورة المائدة - آية ٦."},
+    {q:"ما هي صلاة الفجر؟", opts:["ركعتان","ثلاث ركعات","أربع ركعات"], a:0, explain:"صلاة الفجر ركعتان."},
+    {q:"ما هي صلاة المغرب؟", opts:["ركعتان","ثلاث ركعات","أربع ركعات"], a:1, explain:"صلاة المغرب ثلاث ركعات."},
+    {q:"ماذا نقول في الركوع؟", opts:["سبحان ربي الأعلى","سبحان ربي العظيم","التحيات لله"], a:1, explain:"سبحان ربي العظيم."},
+    {q:"ماذا نقول في السجود؟", opts:["سبحان ربي العظيم","سبحان ربي الأعلى","سمع الله لمن حمده"], a:1, explain:"سبحان ربي الأعلى."},
+    {q:"ما هو الركن الثاني من أركان الإسلام؟", opts:["الشهادتان","الصلاة","الزكاة","الصوم"], a:1, explain:"الصلاة."},
+    {q:"كم ركعة في صلاة الظهر؟", opts:["٢","٣","٤"], a:2, explain:"أربع ركعات."},
+    {q:"ماذا نقول عند التكبير؟", opts:["الله أكبر","سبحان الله","الحمد لله"], a:0, explain:"الله أكبر."},
+    {q:"أي دعاء نقرأ في التشهد؟", opts:["التحيات لله...","سبحان ربي العظيم","سمع الله لمن حمده"], a:0, explain:"التحيات لله والصلوات..."}
+  ];
+  let current=0, score=0, answered=false;
+  const quizEl = document.getElementById('quiz');
+  const resultEl = document.getElementById('quiz-result');
+  const restartBtn = document.getElementById('quiz-restart');
+
+  function renderQuestion(){
+    if(current >= quizData.length){
+      showResult(); return;
+    }
+    answered=false;
+    const q = quizData[current];
+    quizEl.innerHTML = `
+      <div class="q-question">
+        <h4>سؤال ${current+1} من ${quizData.length}: ${q.q}</h4>
+        <div class="q-options">
+          ${q.opts.map((o,i)=>`<button class="q-btn" data-i="${i}">${o}</button>`).join('')}
+        </div>
+        <p id="q-feedback" style="margin-top:10px;font-weight:700"></p>
+      </div>`;
+    quizEl.querySelectorAll('.q-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if(answered) return;
+        answered=true;
+        const i = +btn.dataset.i;
+        if(i===q.a){ btn.classList.add('correct'); score++; }
+        else { btn.classList.add('wrong'); quizEl.querySelector(`[data-i="${q.a}"]`).classList.add('correct'); }
+        quizEl.querySelectorAll('.q-btn').forEach(b=>b.disabled=true);
+        document.getElementById('q-feedback').textContent = (i===q.a?'✅ أحسنت! ':'❌ خطأ. ')+q.explain;
+        setTimeout(()=>{ current++; renderQuestion(); }, 1800);
+      });
+    });
+  }
+  function showResult(){
+    quizEl.innerHTML='';
+    const pct = Math.round(score/quizData.length*100);
+    let msg = pct>=80?'🌟 ممتاز! أنت بطل الوضوء والصلاة!':pct>=50?'👍 جيد! راجع قليلاً وحاول مرة أخرى.':'📚 تحتاج إلى مراجعة الأقسام. أعد قراءة الدروس.';
+    resultEl.style.display='block';
+    resultEl.innerHTML = `<div class="score-box">نتيجتك: ${score} / ${quizData.length} (${pct}%)</div><p style="margin-top:12px;font-size:1.1rem">${msg}</p>`;
+    restartBtn.style.display='inline-block';
+  }
+  restartBtn.addEventListener('click', ()=>{ current=0; score=0; resultEl.style.display='none'; restartBtn.style.display='none'; renderQuestion(); });
+  renderQuestion();
+</script>
+</body>
+</html>
