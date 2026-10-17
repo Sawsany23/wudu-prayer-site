@@ -1,0 +1,16 @@
+{
+  "name": "تعلم الوضوء والصلاة للأطفال",
+  "short_name": "وضوء وصلاة",
+  "description": "كتاب تعليمي لتعلم الوضوء والصلاة للأطفال",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e0f2fe",
+  "theme_color": "#0ea5e9",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
